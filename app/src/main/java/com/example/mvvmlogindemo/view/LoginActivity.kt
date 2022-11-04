@@ -3,12 +3,14 @@ package com.example.mvvmlogindemo.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmlogindemo.R
 import com.example.mvvmlogindemo.databinding.ActivityLoginBinding
 import com.example.mvvmlogindemo.network.ApiService
+import com.example.mvvmlogindemo.network.Response
 import com.example.mvvmlogindemo.network.RetrofitHelper
 import com.example.mvvmlogindemo.receiver.ConnectivityReceiver
 import com.example.mvvmlogindemo.repo.UserRepositry
@@ -36,6 +38,11 @@ class LoginActivity : BaseActivity(),ConnectivityReceiver.ConnectivityReceiverLi
         })
         viewModel.loginResponse.observe(this, Observer {
             displayMessage(R.id.rootLayout,it.toString())
+            when(it){
+                is Response.Loading->{binding.progressBar.visibility = View.VISIBLE}
+                is Response.Sucess->{binding.progressBar.visibility = View.GONE }
+                is Response.Error->{binding.progressBar.visibility = View.GONE}
+            }
         })
     }
 

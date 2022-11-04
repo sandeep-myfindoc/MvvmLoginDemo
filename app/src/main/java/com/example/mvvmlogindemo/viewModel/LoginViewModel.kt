@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mvvmlogindemo.modal.loginResponse.LoginResponse
+import com.example.mvvmlogindemo.network.Response
 import com.example.mvvmlogindemo.repo.UserRepositry
 import kotlinx.coroutines.launch
 
@@ -14,7 +15,7 @@ class LoginViewModel(private val repositry: UserRepositry): ViewModel() {
     var name = MutableLiveData<String>("")
     var password = MutableLiveData<String>("")
     var errMessage = MutableLiveData<String>("")
-    val loginResponse: LiveData<LoginResponse>
+    val loginResponse: LiveData<Response<LoginResponse>>
     get() = repositry.userResponseLiveData// It means when we use/get loginResponse we use is as repositry.userResponseLiveData
 
     init {
