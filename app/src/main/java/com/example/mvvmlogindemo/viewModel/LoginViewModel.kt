@@ -1,38 +1,39 @@
 package com.example.mvvmlogindemo.viewModel
 
 import android.view.View
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.mvvmlogindemo.modal.LoginUser
+import androidx.lifecycle.viewModelScope
+import com.example.mvvmlogindemo.modal.loginResponse.LoginResponse
 import com.example.mvvmlogindemo.repo.UserRepositry
+import kotlinx.coroutines.launch
 
 
 class LoginViewModel(private val repositry: UserRepositry): ViewModel() {
-    var name = MutableLiveData<String>()
-    var password = MutableLiveData<String>()
-    var message = MutableLiveData<String>()
-    private var userMutableLiveData: MutableLiveData<LoginUser> = MutableLiveData<LoginUser>()
-    init {
-        if (userMutableLiveData == null) {
-            userMutableLiveData = MutableLiveData()
-        }
-    }
+    var name = MutableLiveData<String>("")
+    var password = MutableLiveData<String>("")
+    var errMessage = MutableLiveData<String>("")
+    val loginResponse: LiveData<LoginResponse>
+    get() = repositry.userResponseLiveData// It means when we use/get loginResponse we use is as repositry.userResponseLiveData
 
-    fun getUser():MutableLiveData<LoginUser>{
-        return userMutableLiveData
+    init {
+
     }
 
     fun onClick(view: View?) {
-        if(name!=null && name.value?.length!! > 0  ){
-            if(password!=null && password?.value?.length!!>0){
-                val loginUser = LoginUser(name.value!!, password.value!!)
-                userMutableLiveData!!.setValue(loginUser)
+        if(name.value?.length!! > 0  ){
+            if(password?.value?.length!!>0){
+                viewModelScope.launch {
+                    repositry.login()
+                    errMessage.value = ""
+                }
             }
             else{
-                message.value = "Please enter the Password"
+                errMessage.value = "Please enter the Password"
             }
         }else{
-            message.value = "Please enter the Name"
+            errMessage.value = "Please enter the Name"
         }
 
     }

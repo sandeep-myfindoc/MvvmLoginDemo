@@ -17,26 +17,36 @@ import com.example.mvvmlogindemo.viewModelFactory.LoginViewModelFactory
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 
-class LoginActivity : AppCompatActivity(),ConnectivityReceiver.ConnectivityReceiverListener {
+class LoginActivity : BaseActivity(),ConnectivityReceiver.ConnectivityReceiverListener {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var viewModel: LoginViewModel
-    private var snackBar: Snackbar? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_login)
         val apiService = RetrofitHelper.getClient().create(ApiService :: class.java)
         val userRepositry = UserRepositry(apiService)
         viewModel = ViewModelProvider(this, LoginViewModelFactory(userRepositry)).get(LoginViewModel:: class.java)
-        viewModel.getUser().observe(this, Observer{
-            Log.e("Login User: ", it.name+"     "+it.password)
-        })
         binding.ref = viewModel
+        binding.btnSignUp.setOnClickListener {
+            startActivity(this,SignupActivity::class.java)
+        }
+        viewModel.errMessage.observe(this, Observer{
+            if(it.toString().isNotEmpty())
+                displayMessage(R.id.rootLayout,it.toString())
+        })
+        viewModel.loginResponse.observe(this, Observer {
+            displayMessage(R.id.rootLayout,it.toString())
+        })
     }
 
     override fun onResume() {
         super.onResume()
-
         ConnectivityReceiver.connectivityReceiverListener = this
+    }
+
+    override fun onPause() {
+        super.onPause()
+        ConnectivityReceiver.connectivityReceiverListener = null
     }
     override fun onNetworkConnectionChanged(isConnected: Boolean) {
         if (!isConnected) {

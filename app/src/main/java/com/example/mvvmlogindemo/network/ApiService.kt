@@ -1,6 +1,7 @@
 package com.example.mvvmlogindemo.network
 
 import com.example.mvvmlogindemo.data.quoteData.QuoteList
+import com.example.mvvmlogindemo.modal.loginResponse.LoginResponse
 import org.json.JSONObject
 import retrofit2.Response
 import retrofit2.http.GET
@@ -10,7 +11,7 @@ import retrofit2.http.Query
 // define the service here that you want to call
 interface ApiService {
     @GET("EndPoint")
-    suspend fun loginUser():Response<JSONObject>
+    suspend fun loginUser():Response<LoginResponse>
 
     @POST("EndPoint")
     suspend fun registerUser():Response<JSONObject>

@@ -1,75 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
         <variable
             name="ref"
             type="com.example.mvvmlogindemo.viewModel.LoginViewModel" />
     </data>
 
-    <RelativeLayout
+    <ScrollView
         android:id="@+id/rootLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-        <RelativeLayout
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:layout_centerInParent="true"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:paddingTop="32dp"
+            android:paddingBottom="60dp">
 
-            <!--text view for heading-->
             <TextView
-                android:id="@+id/idTVHeader"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:gravity="center_horizontal"
-                android:padding="5dp"
-                android:text="Welcome to Evon \n Register Form"
-                android:textAlignment="center"
-                android:textColor="@color/purple_700"
-                android:textSize="18sp" />
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/sf_pro_display_bold"
+                android:text="@string/txt_login_header"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
 
-            <!--edit text for user name-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:text="@string/txt_login_subheader"
+                android:textColor="@color/light_gray"
+                android:textSize="16sp" />
+
+
             <EditText
-                android:id="@+id/idEdtUserName"
+                android:id="@+id/edUserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/idTVHeader"
-                android:layout_marginTop="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="72dp"
+                android:layout_marginEnd="10dp"
                 android:hint="Enter UserName"
-                android:inputType="textEmailAddress"
-                android:text="@={ref.name}" />
+                android:text="@={ref.name}"
+                android:fontFamily="@font/sf_pro_display_semibold"
+                android:textColor="@color/black"
+                android:textColorHint="@color/light_gray"
+                android:textSize="16sp"
+                android:inputType="textPersonName" />
 
-            <!--edit text for user password-->
+
             <EditText
-                android:id="@+id/idEdtPassword"
+                android:id="@+id/edPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/idEdtUserName"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:hint="Enter Password"
-                android:inputType="textPassword"
-                android:text="@={ref.password}" />
+                android:text="@{ref.password}"
+                android:fontFamily="@font/sf_pro_display_semibold"
+                android:textColor="@color/black"
+                android:textColorHint="@color/light_gray"
+                android:textSize="16sp"
+                android:inputType="textPersonName" />
 
-            <!--button to register our new user-->
             <Button
-                android:id="@+id/idBtnRegister"
+                android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/idEdtPassword"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:layout_marginEnd="10dp"
                 android:onClick="@{(v) -> ref.onClick(v)}"
-                android:text=" Login "
-                android:textAllCaps="false" />
+                android:backgroundTint="@color/black"
+                android:fontFamily="@font/sf_pro_display_bold"
+                android:text="@string/txt_login"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
-        </RelativeLayout>
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/txt_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:text=""
+                android:textColor="@color/highlight_text_color"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/btnSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/sf_pro_display_semibold"
+                android:text="@string/txt_no_account_signup"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
 </layout>

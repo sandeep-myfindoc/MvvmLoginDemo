@@ -3,7 +3,7 @@ package com.example.mvvmlogindemo.viewModel
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.mvvmlogindemo.modal.User
+import com.example.mvvmlogindemo.modal.loginResponse.User
 import com.example.mvvmlogindemo.repo.UserRepositry
 
 class SignupViewModel (private val repositry: UserRepositry): ViewModel() {
