@@ -4,12 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.mvvmlogindemo.modal.loginResponse.LoginResponse
 import com.example.mvvmlogindemo.network.ApiService
-import org.json.JSONObject
-import com.example.mvvmlogindemo.network.Response
+import com.example.mvvmlogindemo.network.NetworkResult
 
 class UserRepositry(private val apiService: ApiService) {
-    private val _loginResponseLiveData = MutableLiveData<Response<LoginResponse>>()
-    val userResponseLiveData: LiveData<Response<LoginResponse>>
+    private val _loginResponseLiveData = MutableLiveData<NetworkResult<LoginResponse>>()
+    val userResponseLiveData: LiveData<NetworkResult<LoginResponse>>
     get() = _loginResponseLiveData // It means when i get value from userResponseLiveData I get it from _loginResponseLiveData
     suspend fun login(){
         apiService.loginUser()

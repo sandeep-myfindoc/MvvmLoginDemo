@@ -67,12 +67,12 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:hint="Enter Password"
-                android:text="@{ref.password}"
+                android:text="@={ref.password}"
                 android:fontFamily="@font/sf_pro_display_semibold"
                 android:textColor="@color/black"
                 android:textColorHint="@color/light_gray"
                 android:textSize="16sp"
-                android:inputType="textPersonName" />
+                android:inputType="textPassword" />
 
             <Button
                 android:id="@+id/btnLogin"
@@ -88,17 +88,6 @@
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/txt_error"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/sf_pro_display_regular"
-                android:text=""
-                android:textColor="@color/highlight_text_color"
-                android:textSize="12sp" />
-
 
             <TextView
                 android:id="@+id/btnSignUp"
@@ -117,6 +106,7 @@
 
     </ScrollView>
         <ProgressBar
+            android:visibility="gone"
             android:id="@+id/progressBar"
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"

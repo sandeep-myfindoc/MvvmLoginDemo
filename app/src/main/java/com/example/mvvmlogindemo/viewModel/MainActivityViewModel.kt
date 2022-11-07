@@ -1,22 +1,24 @@
 package com.example.mvvmlogindemo.viewModel
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mvvmlogindemo.data.quoteData.QuoteList
+import com.example.mvvmlogindemo.modal.quoteResponse.QuoteResponse
+import com.example.mvvmlogindemo.network.NetworkResult
 import com.example.mvvmlogindemo.repo.QuoteRepositry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainActivityViewModel(private val repository: QuoteRepositry): ViewModel(){
-  var quotes = MutableLiveData<QuoteList>()
+    val quoteResponse: LiveData<NetworkResult<QuoteResponse>>
+    get() = repository.quoteResponse
     init {
-
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getQoutes(1)
+        }
     }
 
     fun getQuotes() {
-        viewModelScope.launch(Dispatchers.IO) {
-            quotes.postValue(repository.getQoutes(1))
-        }
+
     }
 }

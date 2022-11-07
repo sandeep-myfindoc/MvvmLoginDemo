@@ -1,7 +1,6 @@
 package com.example.mvvmlogindemo.network
-
-import com.example.mvvmlogindemo.data.quoteData.QuoteList
 import com.example.mvvmlogindemo.modal.loginResponse.LoginResponse
+import com.example.mvvmlogindemo.modal.quoteResponse.QuoteResponse
 import org.json.JSONObject
 import retrofit2.Response
 import retrofit2.http.GET
@@ -17,7 +16,7 @@ interface ApiService {
     suspend fun registerUser():Response<JSONObject>
 
     @GET("quotes")
-    suspend fun getQuotes(@Query("page") page: Int):Response<QuoteList>
+    suspend fun getQuotes(@Query("page") page: Int):Response<QuoteResponse>
 }
 /*
 * There are three way to pass Header

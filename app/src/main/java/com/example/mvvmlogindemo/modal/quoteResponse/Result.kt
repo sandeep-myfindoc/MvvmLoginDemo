@@ -1,4 +1,4 @@
-package com.example.mvvmlogindemo.data.quoteData
+package com.example.mvvmlogindemo.modal.quoteResponse
 
 data class Result(
     val _id: String,
