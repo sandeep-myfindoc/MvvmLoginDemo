@@ -7,4 +7,4 @@ data class QuoteResponse(
     val results: List<Result>,
     val totalCount: Int,
     val totalPages: Int
-)
+    )

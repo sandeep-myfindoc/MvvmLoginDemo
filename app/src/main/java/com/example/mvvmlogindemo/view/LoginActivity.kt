@@ -12,6 +12,7 @@ import com.example.mvvmlogindemo.network.NetworkResult
 import com.example.mvvmlogindemo.network.RetrofitHelper
 import com.example.mvvmlogindemo.receiver.ConnectivityReceiver
 import com.example.mvvmlogindemo.repo.UserRepositry
+import com.example.mvvmlogindemo.utils.Helper
 import com.example.mvvmlogindemo.viewModel.LoginViewModel
 import com.example.mvvmlogindemo.viewModelFactory.LoginViewModelFactory
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -47,6 +48,7 @@ class LoginActivity : BaseActivity(),ConnectivityReceiver.ConnectivityReceiverLi
                 is NetworkResult.Error->{binding.progressBar.visibility = View.GONE}
             }
         })
+        Helper.isValidEmail("Sandeep")
     }
 
     override fun onResume() {

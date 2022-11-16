@@ -23,7 +23,7 @@ class QuoteDataAdapter(private val quoteData: List<Result>) : RecyclerView.Adapt
        return quoteData.size
     }
     // view holder
-    class QuoteViewHolder(val binding: SubitemQuoteBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class QuoteViewHolder(val binding: SubitemQuoteBinding): RecyclerView.ViewHolder(binding.root) {
         /*fun bind(item:Result){
 
         }*/
