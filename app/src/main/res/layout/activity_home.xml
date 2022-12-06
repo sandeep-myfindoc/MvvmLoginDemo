@@ -19,7 +19,7 @@
 
         </androidx.recyclerview.widget.RecyclerView>
         <ProgressBar
-            android:visibility="visible"
+            android:visibility="gone"
             android:id="@+id/progressBar"
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"

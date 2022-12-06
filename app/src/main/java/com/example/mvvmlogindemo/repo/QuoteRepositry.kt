@@ -2,9 +2,15 @@ package com.example.mvvmlogindemo.repo
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.example.mvvmlogindemo.modal.quoteResponse.QuoteResponse
+import com.example.mvvmlogindemo.modal.quoteResponse.Result
 import com.example.mvvmlogindemo.network.ApiService
 import com.example.mvvmlogindemo.network.NetworkResult
+import com.example.mvvmlogindemo.paging.quote.QuotePagingSource
 import org.json.JSONObject
 import retrofit2.Response
 
@@ -33,5 +39,14 @@ class QuoteRepositry(private val quoteService:ApiService) {
         else{
             _quoteResponse.postValue(NetworkResult.Error("Something Went Wrong"))
         }
+    }
+    fun getQuote(): LiveData<PagingData<Result>> {
+
+        val pager = Pager(
+            PagingConfig(20,60),
+            null,
+            { QuotePagingSource(quoteService) }
+        )
+        return pager.liveData
     }
 }

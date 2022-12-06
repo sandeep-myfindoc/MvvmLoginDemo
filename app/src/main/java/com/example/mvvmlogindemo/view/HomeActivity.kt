@@ -14,6 +14,7 @@ import com.example.mvvmlogindemo.databinding.ActivityHomeBinding
 import com.example.mvvmlogindemo.network.ApiService
 import com.example.mvvmlogindemo.network.NetworkResult
 import com.example.mvvmlogindemo.network.RetrofitHelper
+import com.example.mvvmlogindemo.paging.quote.QuotePagingAdapter
 import com.example.mvvmlogindemo.repo.QuoteRepositry
 import com.example.mvvmlogindemo.viewModel.MainActivityViewModel
 import com.example.mvvmlogindemo.viewModelFactory.MainViewModelFactory
@@ -22,6 +23,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var viewModel: MainActivityViewModel
     private lateinit var adapter: QuoteDataAdapter
+    private lateinit var pagingAdapter:QuotePagingAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.e("Inside","Home Activity");
@@ -30,6 +32,19 @@ class HomeActivity : AppCompatActivity() {
         binding.rvNotes.setHasFixedSize(true)
         val apiService = RetrofitHelper.getClient().create(ApiService::class.java)
         viewModel = ViewModelProvider(this, MainViewModelFactory(QuoteRepositry(apiService))).get(MainActivityViewModel::class.java)
+
+        usePagingAdapter()
+    }
+
+    private fun usePagingAdapter(){
+        pagingAdapter =QuotePagingAdapter()
+        binding.rvNotes.adapter = pagingAdapter
+        viewModel.list.observe(this, Observer {
+            pagingAdapter.submitData(lifecycle,it)
+        })
+    }
+
+    private fun useSimplaAdapter(){
         viewModel.quoteResponse.observe(this, Observer {
             when(it){
                 is NetworkResult.Loading->{

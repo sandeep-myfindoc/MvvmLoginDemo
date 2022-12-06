@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmlogindemo.databinding.SubitemQuoteBinding
 import com.example.mvvmlogindemo.modal.quoteResponse.Result
-class QuoteDataAdapter(private val quoteData: List<Result>) : RecyclerView.Adapter<QuoteDataAdapter.QuoteViewHolder>() {
+    class QuoteDataAdapter(private val quoteData: List<Result>) : RecyclerView.Adapter<QuoteDataAdapter.QuoteViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuoteViewHolder {
         var binding = SubitemQuoteBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return QuoteViewHolder(binding)

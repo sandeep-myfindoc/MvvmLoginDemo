@@ -17,6 +17,9 @@ interface ApiService {
 
     @GET("quotes")
     suspend fun getQuotes(@Query("page") page: Int):Response<QuoteResponse>
+
+    @GET("quotes")
+    suspend fun getQuote(@Query("page") page: Int):QuoteResponse
 }
 /*
 * There are three way to pass Header
