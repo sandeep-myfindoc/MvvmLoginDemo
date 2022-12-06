@@ -8,5 +8,6 @@ data class Result(
     val dateAdded: String,
     val dateModified: String,
     val length: Int,
-    val tags: List<String>
+    val tags: List<String>,
+    var image: String,
 )

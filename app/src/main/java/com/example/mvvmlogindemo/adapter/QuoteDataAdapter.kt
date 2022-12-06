@@ -15,8 +15,8 @@ class QuoteDataAdapter(private val quoteData: List<Result>) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: QuoteViewHolder, position: Int) {
-    holder.binding.ref = quoteData[position]
-    /*holder.bind(quoteData[position])*/
+        quoteData[position].image = "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL50_SY500_CR0,0,352,500_AL_.jpg"
+        holder.binding.ref = quoteData[position]
     }
 
     override fun getItemCount(): Int {
@@ -24,8 +24,5 @@ class QuoteDataAdapter(private val quoteData: List<Result>) : RecyclerView.Adapt
     }
     // view holder
     inner class QuoteViewHolder(val binding: SubitemQuoteBinding): RecyclerView.ViewHolder(binding.root) {
-        /*fun bind(item:Result){
-
-        }*/
     }
 }

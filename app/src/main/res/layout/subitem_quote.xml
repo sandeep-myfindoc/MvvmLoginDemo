@@ -26,7 +26,8 @@
                     android:id="@+id/ivPic"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    imageFromUrl="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL50_SY500_CR0,0,352,500_AL_.jpg"
+                    imageUrl="@{ref.image}"
+                    placeHolder = "@{@drawable/ic_launcher_background}"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
@@ -36,6 +37,7 @@
                     bind:layout_constraintStart_toStartOf="parent"
                     bind:layout_constraintTop_toTopOf="parent"
                     android:layout_marginLeft="8dp"/>
+
                 <TextView
                     android:id="@+id/tvAuthor"
                     android:layout_width="0dp"
