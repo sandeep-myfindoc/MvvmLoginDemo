@@ -14,7 +14,7 @@ class QuotePagingAdapter : PagingDataAdapter<Result,QuotePagingAdapter.QuoteView
         return QuoteViewHolder(binding)
     }
     override fun onBindViewHolder(holder: QuoteViewHolder, position: Int) {
-        getItem(position)?.image = "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL50_SY500_CR0,0,352,500_AL_.jpg"
+        //getItem(position)?.image = "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL50_SY500_CR0,0,352,500_AL_.jpg"
         holder.binding.ref = getItem(position)
     }
     inner class QuoteViewHolder(val binding: SubitemQuoteBinding) :

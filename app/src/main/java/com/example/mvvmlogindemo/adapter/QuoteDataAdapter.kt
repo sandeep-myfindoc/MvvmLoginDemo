@@ -15,7 +15,7 @@ import com.example.mvvmlogindemo.modal.quoteResponse.Result
     }
 
     override fun onBindViewHolder(holder: QuoteViewHolder, position: Int) {
-        quoteData[position].image = "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL50_SY500_CR0,0,352,500_AL_.jpg"
+        //quoteData[position].image = "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL50_SY500_CR0,0,352,500_AL_.jpg"
         holder.binding.ref = quoteData[position]
     }
 

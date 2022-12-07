@@ -26,8 +26,7 @@
                     android:id="@+id/ivPic"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    imageUrl="@{ref.image}"
-                    placeHolder = "@{@drawable/ic_launcher_background}"
+                    android:src="@drawable/ic_launcher_background"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
@@ -37,7 +36,8 @@
                     bind:layout_constraintStart_toStartOf="parent"
                     bind:layout_constraintTop_toTopOf="parent"
                     android:layout_marginLeft="8dp"/>
-
+                <!--imageUrl="@{ref.image}"
+                placeHolder = "@{@drawable/ic_launcher_background}"-->
                 <TextView
                     android:id="@+id/tvAuthor"
                     android:layout_width="0dp"

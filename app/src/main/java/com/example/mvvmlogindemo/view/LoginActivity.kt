@@ -5,6 +5,7 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.paging.ExperimentalPagingApi
 import com.example.mvvmlogindemo.R
 import com.example.mvvmlogindemo.databinding.ActivityLoginBinding
 import com.example.mvvmlogindemo.network.ApiService
@@ -17,7 +18,7 @@ import com.example.mvvmlogindemo.viewModel.LoginViewModel
 import com.example.mvvmlogindemo.viewModelFactory.LoginViewModelFactory
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
-
+@ExperimentalPagingApi
 class LoginActivity : BaseActivity(),ConnectivityReceiver.ConnectivityReceiverListener {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var viewModel: LoginViewModel
