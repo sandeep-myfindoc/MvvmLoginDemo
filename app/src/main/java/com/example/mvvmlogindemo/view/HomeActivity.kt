@@ -29,24 +29,23 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var pagingAdapter:QuotePagingAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.e("Inside","Home Activity");
         binding = DataBindingUtil.setContentView(this,  R.layout.activity_home)
         binding.rvNotes.layoutManager = LinearLayoutManager(this)
         binding.rvNotes.setHasFixedSize(true)
         val apiService = RetrofitHelper.getClient().create(ApiService::class.java)
         viewModel = ViewModelProvider(this, MainViewModelFactory(QuoteRepositry(apiService,
             QuoteDataBase.getQuoteDatabase(this)))).get(MainActivityViewModel::class.java)
-
-        usePagingAdapter()
+        useSimplaAdapter()
+        //usePagingAdapter()
     }
 
     private fun usePagingAdapter(){
         pagingAdapter =QuotePagingAdapter()
         binding.rvNotes.adapter = pagingAdapter.withLoadStateHeaderAndFooter(header = LoaderAdapter(),
         footer = LoaderAdapter())
-        viewModel.list.observe(this, Observer {
+        /*viewModel.list.observe(this, Observer {
             pagingAdapter.submitData(lifecycle,it)
-        })
+        })*/
     }
 
     private fun useSimplaAdapter(){

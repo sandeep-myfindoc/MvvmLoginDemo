@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 class MainActivityViewModel(private val repository: QuoteRepositry): ViewModel(){
     val quoteResponse: LiveData<NetworkResult<QuoteResponse>>
     get() = repository.quoteResponse
-    val list = repository.getQuote().cachedIn(viewModelScope)
+    //val list = repository.getQuote().cachedIn(viewModelScope) for paging only
     init {
         viewModelScope.launch(Dispatchers.IO) {
             repository.getQoutes(1)
