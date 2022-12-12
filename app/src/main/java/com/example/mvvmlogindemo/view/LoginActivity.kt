@@ -1,5 +1,6 @@
 package com.example.mvvmlogindemo.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
@@ -29,9 +30,6 @@ class LoginActivity : BaseActivity(),ConnectivityReceiver.ConnectivityReceiverLi
         val userRepositry = UserRepositry(apiService)
         viewModel = ViewModelProvider(this, LoginViewModelFactory(userRepositry)).get(LoginViewModel:: class.java)
         binding.ref = viewModel
-        binding.btnSignUp.setOnClickListener {
-            startActivity(this,SignupActivity::class.java)
-        }
         viewModel.errMessage.observe(this, Observer{
             if(it.toString().isNotEmpty()){
                 if(it.toString().equals("Success"))
@@ -50,8 +48,22 @@ class LoginActivity : BaseActivity(),ConnectivityReceiver.ConnectivityReceiverLi
             }
         })
         Helper.isValidEmail("Sandeep")
+        registerListener()
     }
-
+    private fun registerListener(){
+        binding.btnSignUp.setOnClickListener {
+            startActivity(this,SignupActivity::class.java)
+        }
+        binding.btnShare.setOnClickListener {
+            val sharingIntent = Intent(Intent.ACTION_SEND);
+            sharingIntent.type = "text/plain";
+            val shareBody = "Your Body Here";
+            val shareSubject = "Your Subject Here";
+            //sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+            //sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
+            startActivity(Intent.createChooser(sharingIntent, "Share using"));
+        }
+    }
     override fun onResume() {
         super.onResume()
         ConnectivityReceiver.connectivityReceiverListener = this
@@ -71,3 +83,5 @@ class LoginActivity : BaseActivity(),ConnectivityReceiver.ConnectivityReceiverLi
         }
     }
 }
+
+

@@ -1,17 +1,18 @@
 package com.example.mvvmlogindemo.adapter
 
-import android.R
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmlogindemo.databinding.SubitemQuoteBinding
 import com.example.mvvmlogindemo.modal.quoteResponse.Result
-    class QuoteDataAdapter(private val quoteData: List<Result>) : RecyclerView.Adapter<QuoteDataAdapter.QuoteViewHolder>() {
+
+class QuoteDataAdapter(private val quoteData: List<Result>) : RecyclerView.Adapter<QuoteDataAdapter.QuoteViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuoteViewHolder {
         var binding = SubitemQuoteBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return QuoteViewHolder(binding)
+        val temp = QuoteViewHolder(binding)
+        temp.handleListener()
+        return temp
     }
 
     override fun onBindViewHolder(holder: QuoteViewHolder, position: Int) {
@@ -24,5 +25,11 @@ import com.example.mvvmlogindemo.modal.quoteResponse.Result
     }
     // view holder
     inner class QuoteViewHolder(val binding: SubitemQuoteBinding): RecyclerView.ViewHolder(binding.root) {
+        fun handleListener(){
+            binding.rootLayout.setOnClickListener {
+                Log.e("Sandeep "+layoutPosition,"Snadeep"+layoutPosition)
+            }
+        }
     }
+
 }

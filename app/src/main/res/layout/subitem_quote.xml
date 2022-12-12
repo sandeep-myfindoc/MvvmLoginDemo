@@ -9,10 +9,12 @@
             type="com.example.mvvmlogindemo.modal.quoteResponse.Result"/>
     </data>
     <LinearLayout
+        android:id="@+id/rootLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true">
         <androidx.cardview.widget.CardView
+            android:id="@+id/rootCardView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -20,6 +22,7 @@
             android:elevation="3dp"
             card_view:cardCornerRadius="1dp">
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/rootConstraint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
